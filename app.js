@@ -116,6 +116,11 @@ mongoose.connect(MONGO_URI,
  });
 
 
+
+//  CATALOG!!!!
+
+// MAKE SEARCH BTN!!!
+
 // add pagination to main, sections, subsections. cart and user page. EJS with "includes" 
 
 // make CSFR protection (259th video)

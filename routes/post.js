@@ -49,6 +49,8 @@ router.post("/sendMail",
 
 ], post.sendMail)
 
+router.post("/search", post.search)
+
 
 
 module.exports = router;

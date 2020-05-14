@@ -4,6 +4,7 @@ const Order = require("../database/Order")
 const {validationResult} = require('express-validator/check')
 const nodeMailer = require('nodemailer')
 const sendGrid = require('nodemailer-sendgrid-transport')
+const _ = require('lodash')
 
 const transporter = nodeMailer.createTransport(sendGrid({
     auth:{
@@ -219,4 +220,25 @@ exports.sendMail = (req, res, next)=>{
         res.redirect("back")
     })
 
+}
+
+// --- search -------------------------------------------------------------------------- 
+
+exports.search = (req, res, next)=>{
+    const search_value = _.capitalize(req.body.search)
+    Book.find({title: { $regex: '.*' + search_value + '.*' }})
+    .then(result=>{
+        res.render("subSection", {
+            path: '/search',
+            pageTitle: "Books Found " + result.length,
+            sectionName: "What we have",
+            books: result,
+        })
+    })
+    .catch(err=>{
+        const error =  new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
+        
+    })
 }
