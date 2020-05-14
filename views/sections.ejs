@@ -24,11 +24,10 @@
                             <%if( eval("book."+pageTitle) == items){%>
                             <a class="" data-toggle="tooltip" data-placement="auto" title="<%=book.title%>" href="book/<%=book.title.split(" ").join("_")%>/<%=book.id%>">
                                 <img class="list-group-item" src="/<%= book.cover %>" alt="<%= book.title%>">
-                                <!-- <p class="text-center"><%= //item.title %> </p> -->
                             </a>
                         <% }} %>
-                        <a class="" data-toggle="tooltip" data-placement="auto" href="/<%= section.split(" ").join("_") %>/<%= items.split(" ").join("_") %>/">
-                            <div class=" list-group-item">See ALL</div>
+                        <a class="all list-group-item" data-toggle="tooltip" data-placement="auto" href="/<%= section.split(" ").join("_") %>/<%= items.split(" ").join("_") %>/">
+                            See ALL
                         </a>
                     </ul>
                 </div>

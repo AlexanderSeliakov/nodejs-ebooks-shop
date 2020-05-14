@@ -12,6 +12,19 @@ img {
   overflow: hidden;
 }
 
+.all {
+  height: 299px;
+  width: 130px;
+  border-radius: 3px;
+  text-align: center;
+  padding-top: 10%;
+  background-color: white;
+}
+
+.all:hover {
+  background-color: lightslategray;
+}
+
 .cart img,
 .allbooks img {
   max-height: 250px;

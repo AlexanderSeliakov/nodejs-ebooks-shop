@@ -22,6 +22,18 @@ img {
     overflow: hidden;
 }
 
+.all{
+    height: 299px;
+    width: 130px;
+    border-radius: 3px;
+    text-align: center;
+    padding-top: 10%;
+    background-color: white;
+    &:hover{
+        background-color: lightslategray; 
+    }
+}
+
 .cart,
 .allbooks {
     img {
