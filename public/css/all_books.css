@@ -1,0 +1,132 @@
+img {
+  max-height: 300px;
+  min-height: 100px;
+}
+
+.book_cover {
+  width: auto;
+  height: auto;
+}
+
+.section {
+  overflow: hidden;
+}
+
+.cart img,
+.allbooks img {
+  max-height: 250px;
+  min-height: 100px;
+}
+
+.details {
+  padding: 5px;
+}
+
+.allbooks p {
+  text-align: center;
+}
+
+.book {
+  padding: 0;
+}
+
+.logging {
+  width: 100%;
+  margin: auto 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logging form {
+  position: relative;
+  width: 100%;
+  border: solid 1px #a5a4a4;
+  background-color: #f9f5f5;
+  max-width: 400px;
+  padding: 0 40px 50px;
+  margin: 0 auto;
+}
+
+.logging label {
+  min-width: 70px;
+}
+
+.logging button {
+  width: 100%;
+}
+
+.logging a {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.9em;
+}
+
+.logging .register {
+  right: 40px;
+}
+
+.logging .reset {
+  left: 40px;
+}
+
+#registration {
+  padding: 0 40px 100px;
+}
+
+.check {
+  margin: 0 auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.check .sing_in, .check .log {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #d4d4d4;
+}
+
+.check .log {
+  background-color: #fffffff8;
+}
+
+.check .log form {
+  position: relative;
+  padding: 0 40px 90px;
+  margin: 0 auto;
+}
+
+.check .log label {
+  min-width: 70px;
+}
+
+.check .log a {
+  position: absolute;
+  bottom: 20px;
+  right: 15px;
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 375px) {
+  img {
+    max-height: 200px;
+    min-height: 100px;
+  }
+}
+/*# sourceMappingURL=all_books.css.map */

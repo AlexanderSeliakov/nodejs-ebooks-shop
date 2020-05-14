@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %> 
+</head>
+<body>
+    <%- include('../includes/header.ejs') %> 
+
+
+    <main class="logging mt-5">        
+        <form action="/new-password" method="POST" >
+            <% if (messageToUser) { %>
+                <p class="alert alert-warning mt-3"><%= messageToUser %></p>
+            <% } %>
+            <div class="inpt mt-3">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" type="password"  required autocomplete="on" >
+            </div>
+            <div class="inpt mt-3">
+                <label for="password">Repeat Password</label>
+                <input class="form-control" id="password2" name="password2" type="password"  required autocomplete="on" >
+            </div>
+            <input type="hidden" name="passwordToken"  value="<%= passwordToken %>">
+            <input type="hidden" name="userId" value="<%= userId %>">
+            <button class="btn mt-4 btn-outline-info" type="submit">Change</button>
+        </form> 
+    </main>
+
+
+    <%- include('../includes/footer.ejs') %> 

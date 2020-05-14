@@ -1,0 +1,136 @@
+.row {
+  margin: 58px auto;
+  max-width: 1300px;
+  width: 100%;
+  padding: 0 1em;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px 10px;
+  -ms-grid-columns: 30% auto 15% 15% 15% 15%;
+      grid-template-columns: 30% auto 15% 15% 15% 15%;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+      grid-template-areas: "bbook s sbook1 sbook2 sbook3 sbook4" "bbook s sbook5 sbook6 sbook7 sbook8";
+}
+
+.row p {
+  margin: 5px 5px;
+}
+
+@media all and (max-width: 800px) {
+  p, span {
+    font-size: 0.7em;
+  }
+  .row {
+    margin: 10px auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .book {
+    margin: 10px auto;
+    width: 45%;
+  }
+  .book .details {
+    max-height: 0;
+  }
+}
+
+.book {
+  position: relative;
+  color: white;
+}
+
+.book img {
+  position: relative;
+  width: 100%;
+}
+
+.book .details {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  background-color: #343a40;
+  -webkit-transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s ease-out;
+}
+
+.book .details a {
+  margin-left: 5px;
+}
+
+.book .details .buy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.book .details button {
+  min-width: 100px;
+}
+
+.book:hover .details {
+  max-height: 100%;
+}
+
+.book:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  grid-area: bbook;
+}
+
+.book:nth-of-type(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  grid-area: sbook1;
+}
+
+.book:nth-of-type(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+  grid-area: sbook2;
+}
+
+.book:nth-of-type(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 5;
+  grid-area: sbook3;
+}
+
+.book:nth-of-type(5) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 6;
+  grid-area: sbook4;
+}
+
+.book:nth-of-type(6) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-area: sbook5;
+}
+
+.book:nth-of-type(7) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 4;
+  grid-area: sbook6;
+}
+
+.book:nth-of-type(8) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 5;
+  grid-area: sbook7;
+}
+
+.book:nth-of-type(9) {
+  -ms-grid-row: 2;
+  -ms-grid-column: 6;
+  grid-area: sbook8;
+}
+/*# sourceMappingURL=index.css.map */

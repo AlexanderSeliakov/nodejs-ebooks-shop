@@ -1,0 +1,29 @@
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('includes/header.ejs') %>
+    <% if (messageToUser) { %>
+        <p class="container alert alert-success mt-3"><%= messageToUser %></p>
+    <% } %>
+    <% if (errorMessage) { %>
+        <p class="container alert alert-danger mt-3"><%= errorMessage %></p>
+    <% } %>
+
+    <main class="container my-4">
+
+        <h3>Contact us</h3>
+        <div class=" mb-2">
+            <div>
+                <form action="/sendMail" method="POST" class="contact-input">
+                    <input class="form-control my-3" type="text" name="name" placeholder="name*" required>
+                    <input class="form-control my-3" type="mail" name="mail" placeholder="email*" required>
+                    <input class="form-control my-3" type="text" name="subject" placeholder="subject">
+                    <input class="form-control my-3" type="number" name="phone" placeholder="number">
+                    <textarea class="form-control my-3" name="text" rows="4" placeholder="message*" required></textarea>
+                    <button class="btn btn-outline-secondary my-3" type="submit" name="submit">Send</button>
+                </form>
+            </div>
+        </div>
+    </main>
+<%- include('includes/footer.ejs') %> 

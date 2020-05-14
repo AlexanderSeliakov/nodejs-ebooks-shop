@@ -1,0 +1,72 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+
+body, html {
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+.row:before, .row:after {
+  display: none !important;
+}
+
+.nav-scroller {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nav-link, .list-group {
+  white-space: nowrap;
+}
+
+.log_in {
+  position: relative;
+  min-width: 290px;
+  min-height: 200px;
+  padding: 15px 35px;
+  z-index: 3;
+}
+
+.log_in form {
+  position: relative;
+}
+
+.log_in a {
+  position: absolute;
+  bottom: 15px;
+  right: 0px;
+  font-size: 0.9em;
+}
+
+.log_in .register {
+  bottom: 0px;
+}
+
+.log_in .reset {
+  bottom: 25px;
+}
+
+@media screen and (max-width: 575px) {
+  .logout {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+/*# sourceMappingURL=main.css.map */

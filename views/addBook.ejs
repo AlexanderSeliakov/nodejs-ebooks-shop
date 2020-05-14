@@ -1,0 +1,60 @@
+<%- include('includes/head.ejs') %> 
+</head>
+<body>
+    <%- include('includes/header.ejs') %> 
+    <% if (messageToUser) { %>
+        <p class=" alert mt-3  <% if ( hasError) { %> alert-danger <% }else{ %> alert-success<% }%>"><%= messageToUser %></p>
+    <% } %>
+    <form action="/<% if (editing) { %>edit_book<% } else { %>add_book<% } %>" method="POST" enctype="multipart/form-data" class="insert-form container my-4">
+
+        <div class="form-group">
+            <label for="book_name">Name</label>
+            <input type="text" class="form-control" id="book_name" name="book_name" required
+             value="<% if (editing || hasError) { %><%= keepetInput.title %><% } %>">
+        </div>
+
+        <div class="form-group">
+            <label for="book_series">Series</label>
+            <input type="text" class="form-control" id="book_series" name="book_series" required
+             value="<% if (editing || hasError) { %><%= keepetInput.series %><% } %>">
+        </div>
+
+        <div class="form-group">
+            <label for="book_author">Author</label>
+            <input type="text" class="form-control" id="book_author" name="book_author" required
+             value="<% if (editing || hasError) { %><%= keepetInput.author %><% } %>">
+        </div>
+
+        <div class="form-group">
+            <label for="book_genre">Genre</label>
+            <input type="text" class="form-control" id="book_genre" name="book_genre" required
+             value="<% if (editing || hasError) { %><%= keepetInput.genre %><% } %>">
+        </div>
+
+
+        <div class="form-group">
+            <label for="book_price">Price</label>
+            <input type="tel" class="form-control" id="book_price" name="book_price" required
+            value="<% if (editing || hasError) { %><%= keepetInput.price %><% } %>">
+        </div>
+
+        <div class="form-group">
+            <label for="book_description">Description</label>
+            <textarea  class="form-control" id="book_description" name="book_description" required
+            ><% if (editing || hasError) { %><%= keepetInput.description %><% } 
+            %></textarea>
+        </div>
+        <div class="form-group my-4">
+            <label for="book_img">Book Cover</label> <br>
+            <input type="file" id="book_img" name="book_img" <% if (!editing) { %>required<% } %>>
+        </div>
+
+        <% if (editing) { %>
+            <input type="hidden" value="<%= keepetInput.id %>" name="bookID">
+            <button class="btn btn-outline-dark mt-2" type="submit" name="submit">Change</button>
+        <% }else{ %>
+             <button class="btn btn-outline-dark mt-2" type="submit" name="submit">Add Book</button>
+        <% }%>
+    </form>
+
+<%- include('includes/footer.ejs') %> 

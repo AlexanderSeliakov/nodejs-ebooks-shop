@@ -1,0 +1,34 @@
+<%- include('../includes/head.ejs') %> 
+</head>
+<body>
+    <%- include('../includes/header.ejs') %> 
+
+
+    <main class="logging mt-5">        
+    
+        <form action="/login" method="POST" novalidate>
+            
+            <% if (messageToUser) { %>
+                <p class="alert alert-warning mt-4"><%= messageToUser %></p>
+            <% } %>
+
+            <div class="inpt mt-3">
+                <label for="email">Email</label>
+                <input class="form-control" id="email" name="email" type="mail" value="<%= keepetInput.email %>"  required>
+            </div>
+
+            <div class="inpt mt-3">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" type="password"  required autocomplete="on" >
+            </div>
+            <input type="checkbox"> <span>remember me</span> <br>
+            <button class="btn mt-4 btn-outline-info" type="submit" name="login_button">log in</button>
+
+            <a href="/signup" class="register" style="color:black">Register</a>
+
+            <a href="/reset" class="reset" style="color:black">Reset Password</a>
+        </form>
+    </main>
+
+
+    <%- include('../includes/footer.ejs') %> 

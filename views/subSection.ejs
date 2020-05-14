@@ -1,0 +1,30 @@
+<%- include('includes/head.ejs') %> 
+</head>
+<body style="background-color: #f1f1f1">
+    <%- include('includes/header.ejs') %> 
+
+    <main class="container">
+
+        <% if(!books.length ) { %>    
+            <h3 class="mt-5 mb-4">Nothing...</h3>
+        <%} else{ %> 
+
+        <h3 class="mt-5 mb-4"><%= sectionName %> </h3>
+
+        <div class="row allbooks">
+            <% for( let book of books) { %>
+
+            <a class="col-6 col-md-3 col-xl-3 text-center" href="/book/<%=book.title.split(" ").join("_")%>/<%=book.id%>">
+                <img src="/<%= book.cover %>" alt="<%= book.title%>">
+                <p class="text-dark"><%= book.title %></p>
+            </a>
+
+            <% }} %>
+        </div>
+
+
+    </main>
+
+
+    
+    <%- include('includes/footer.ejs') %> 

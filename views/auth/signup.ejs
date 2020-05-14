@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %> 
+</head>
+<body>
+    <%- include('../includes/header.ejs') %> 
+
+
+    <main class="logging mt-5">        
+    
+        <form action="/signup" method="POST" id = "registration" class="py-5" novalidate>
+        
+            <h1 class="h3 mb-3 font-weight-normal">Please, sign in</h1>
+
+            <% if (messageToUser) { %>
+                <p class="alert alert-warning"><%= messageToUser %></p>
+            <% } %>
+
+
+            <div class="inpt mt-3">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" name="name" type="text" value="<%= keepetInput.name %> " required autofocus>
+            </div>
+
+
+            <div class="inpt mt-3">
+                <label for="login">Email address</label>
+                <input class="form-control" id="email" name="email" type="mail" value="<%= keepetInput.email %> " required autofocus>
+            </div>
+
+            <div class="inpt mt-3">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" name="password" type="password"  autocomplete="on" required>
+            </div>
+
+            <div class="inpt mt-3">
+                <label for="password">Repeat password</label>
+                <input class="form-control" id="password2" name="password2" type="password"  autocomplete="on" required>
+            </div>
+
+            <button class="btn mt-5 mb-4 btn-outline-info" type="submit" name="register">Register</button>
+
+        </form>
+
+    </main>
+
+
+    <%- include('../includes/footer.ejs') %> 

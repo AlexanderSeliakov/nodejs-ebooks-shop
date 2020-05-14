@@ -1,0 +1,105 @@
+.row{
+    margin: 58px auto;
+    max-width: 1300px;
+    width: 100%;
+    padding: 0 1em;
+    display: grid;
+    grid-gap: 10px 10px;
+    grid-template-columns: 30% auto 15% 15% 15% 15%;
+    grid-template-rows: auto auto;
+    grid-template-areas: "bbook s sbook1 sbook2 sbook3 sbook4"
+                          "bbook s sbook5 sbook6 sbook7 sbook8";       
+    p{
+      margin: 5px 5px;
+    }      
+  }
+  
+  @media all and (max-width: 800px) {
+    p, span{
+      font-size: 0.7em
+    }
+    .row{
+      margin: 10px auto;
+      display: flex;
+    }
+    .book {
+      margin: 10px auto;
+      width: 45%;
+    }
+    .book {
+    .details{
+      max-height: 0;
+    }}
+  }
+  
+  .book {
+  
+    position: relative;
+    color: white;
+  
+    img{
+      position: relative;
+      width: 100%;
+    }
+    .details{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      background-color: #343a40;
+      transition: max-height 0.5s ease-out;
+      a{
+        margin-left: 5px;
+      }
+      .buy{
+        display: flex;
+        padding:10px;
+        justify-content: space-between
+      }
+      button{
+        min-width: 100px;
+      }
+  
+    }
+    &:hover{
+      .details{
+          max-height: 100%;
+      }
+    }
+  }
+  
+  .book:nth-child(1) {
+    grid-area: bbook;
+  }
+  
+  .book:nth-of-type(2) {
+    grid-area: sbook1
+  }
+  
+  .book:nth-of-type(3) {
+    grid-area: sbook2
+  }
+  
+  .book:nth-of-type(4) {
+    grid-area: sbook3
+  }
+  
+  .book:nth-of-type(5) {
+    grid-area: sbook4
+  }
+  
+  .book:nth-of-type(6) {
+    grid-area: sbook5;
+  }
+  
+  .book:nth-of-type(7) {
+    grid-area: sbook6;
+  }
+  
+  .book:nth-of-type(8) {
+    grid-area: sbook7;
+  }
+  .book:nth-of-type(9) {
+    grid-area: sbook8;
+  }

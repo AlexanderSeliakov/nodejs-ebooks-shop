@@ -1,0 +1,44 @@
+<%- include('includes/head.ejs') %> 
+</head>
+<body>
+    <%- include('includes/header.ejs') %> 
+
+    <main class="container">
+
+        <% for( let items of book) { %>
+            <div class="section my-5">
+
+                <div class=" mx-auto">
+                    <h3 class="col-12">
+                        <a class="text-dark" href="/<%= section.split(" ").join("_")%>/<%= items.split(" ").join("_") %>/"><%=items%> </a>
+                    </h3>
+                </div>
+    
+                <div class="nav-link nav-scroller p-0 col-12">
+
+                    
+                    <ul class="list-group list-group-horizontal">
+            
+                        <% for( let book of result) { %>
+
+                            <%if( eval("book."+pageTitle) == items){%>
+                            <a class="" data-toggle="tooltip" data-placement="auto" title="<%=book.title%>" href="book/<%=book.title.split(" ").join("_")%>/<%=book.id%>">
+                                <img class="list-group-item" src="/<%= book.cover %>" alt="<%= book.title%>">
+                                <!-- <p class="text-center"><%= //item.title %> </p> -->
+                            </a>
+                        <% }} %>
+                        <a class="" data-toggle="tooltip" data-placement="auto" href="/<%= section.split(" ").join("_") %>/<%= items.split(" ").join("_") %>/">
+                            <div class=" list-group-item">See ALL</div>
+                        </a>
+                    </ul>
+                </div>
+
+    
+            </div>
+        <% } %>
+
+    </main>
+
+
+    
+    <%- include('includes/footer.ejs') %> 

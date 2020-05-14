@@ -1,0 +1,7 @@
+{
+    "env":{
+        "MONGO_USER": "alex",
+        "MONGO_PASSWORD": "alexNode",
+        "MONGO_DEFAULT_DATABASE" : "test"
+    }
+}
