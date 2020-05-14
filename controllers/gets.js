@@ -137,7 +137,7 @@ exports.getBook = (req, res, next) => {
 
 exports.download = (req, res, next) => {
     const bookID = req.params.bookID
-    const bookName = "1500_samykh_upotrebitelnykh_angl.pdf" // bookID + ".pdf"
+    const bookName = "book.pdf" // bookID + ".pdf"
     const bookPath = path.join('books', bookName)
 
     User.findById(req.User._id)
@@ -153,7 +153,7 @@ exports.download = (req, res, next) => {
                 return next(err)
             }
             res.setHeader("Content-Type", 'application/pdf')
-            res.setHeader('Content-Disposition', 'attachment; filename="1500_samykh_upotrebitelnykh_angl"')
+            res.setHeader('Content-Disposition', 'attachment; filename="book"')
             res.send(data)
         })
     })

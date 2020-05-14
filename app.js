@@ -22,7 +22,6 @@ const app = express();
 const storeSession = new MongodbSession({
    uri: MONGO_URI,
    collection: 'sessions',
-
 });
 
 const fileStorage = multer.diskStorage({
