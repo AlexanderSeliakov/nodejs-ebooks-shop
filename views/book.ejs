@@ -19,12 +19,12 @@
 
                     <h3 class="mb-0"><%= book.title %></h3>
 
-                    <a class="text-info" href="/author/<%= book.author.split(" ").join("_") %>">
-                        <%= book.author %>
+                    <a class="text-info toUpper" href="/author/<%= book.author %>">
+                        <%= book.author.split("-").join(" ") %>
                     </a>
 
-                    <a class="text-dark" href="/series/<%= book.series.split(" ").join("_") %>">
-                       <ins> <%= book.series %></ins>
+                    <a class="text-dark toUpper" href="/series/<%= book.series%>">
+                       <ins> <%= book.series.split("-").join(" ") %></ins>
                     </a>
 
                     <p class="mt-3"><%= book.description %></p>

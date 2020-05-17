@@ -13,8 +13,9 @@ const transporter = nodeMailer.createTransport(sendGrid({
     }
 }))
 
-// --- log in -------------------------------------------------------------------------- 
 
+
+// --- log in -------------------------------------------------------------------------- 
 exports.getLogin = (req, res)=>{
     res.render("auth/login", {
         path: '',
@@ -41,14 +42,6 @@ exports.postLogin = (req, res, next) => {
 
     User.findOne({email: email, })
     .then(user=>{
-        // if(!user){
-        //     return res.status(422).render("auth/login", {
-        //         path: '',
-        //         pageTitle: 'Log in, please',
-        //         messageToUser: "Please enter a valid email",
-        //         keepetInput: {email: email}
-        //     })
-        // }
         bcrypt.compare(password, user.password)
         .then( match =>{
             if(match){

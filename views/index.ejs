@@ -9,14 +9,14 @@
         <% } %>
         <div class="row">
             <% for (let book of books) { %>    
-            <div class="book">
-                <a href="/book/<%= book.title.split(" ").join("_")%>/<%= book._id%>"><img src="/<%= book.cover %>" alt="<%= book.title%>"></a>
+            <div class="book toUpper">
+                <a href="/book/<%= book.path%>/<%= book._id%>"><img src="/<%= book.cover %>" alt="<%= book.title%>"></a>
                 <div class="details">
                     <p><%= book.title %></p>
-                     <a href="/author/<%= book.author.split(" ").join("_")%>" class="text-info"><%= book.author%></a>
+                     <a href="/author/<%= book.author%>" class="text-info"><%= book.author.split("-").join(" ")%></a>
                     <div class="buy">
                         <span><%= book.price %>$</span>
-                        <a href="/book/<%= book.title.split(" ").join("_")%>/<%= book._id%>" class="btn btn-outline-info">read more</a>
+                        <a href="/book/<%= book.path%>/<%= book._id%>" class="btn btn-outline-info">read more</a>
                     </div>
                 </div>
 

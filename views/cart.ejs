@@ -8,7 +8,7 @@
         <p class="alert alert-danger mt-2"><%= messageToUser %></p>
     <% } %>
 
-    <main class="container my-5">
+    <main class="container my-5 toUpper">
 
         <% if (!books.length) { %>
 
@@ -32,12 +32,12 @@
 
                 <div class="book border d-flex col-12 col-md-6 col-xl-4">
 
-                    <a href="/book/<%= book.title.split(" ").join("_")%>/<%=book._id%>"><img src="/<%= book.cover %>" alt="<%= book.title%>"></a>
+                    <a href="/book/<%= book.path%>/<%=book._id%>"><img src="/<%= book.cover %>" alt="<%= book.title%>"></a>
 
                     <div class="card-body p-3">
                         <p><%= book.title %></p>
-                        <a class="text-primary" href="/author/<%= book.author.split(" ").join("_")%>%>">
-                            <p><%= book.author %></p>
+                        <a class="text-primary" href="/author/<%= book.author%>%>">
+                            <p><%= book.author.split("-").join(" ") %></p>
                         </a>
                         <p class=""><b><%= book.price %>$</b></p>
                         <form action="/removeFromCart" method="POST"> 

@@ -22,6 +22,10 @@ body {
   background-color: #f1f1f1;
 }
 
+.toUpper {
+  text-transform: capitalize;
+}
+
 .row:before, .row:after {
   display: none !important;
 }

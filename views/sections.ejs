@@ -10,7 +10,7 @@
 
                 <div class=" mx-auto">
                     <h3 class="col-12">
-                        <a class="text-dark" href="/<%= section.split(" ").join("_")%>/<%= items.split(" ").join("_") %>/"><%=items%> </a>
+                        <a class="text-dark" href="/<%= section%>/<%= items%>/"><p class="toUpper"><%=items.split("-").join(" ")%></p> </a>
                     </h3>
                 </div>
     
@@ -22,11 +22,11 @@
                         <% for( let book of result) { %>
 
                             <%if( eval("book."+pageTitle) == items){%>
-                            <a class="" data-toggle="tooltip" data-placement="auto" title="<%=book.title%>" href="book/<%=book.title.split(" ").join("_")%>/<%=book.id%>">
+                            <a class="" data-toggle="tooltip" data-placement="auto" title="<%=book.title%>" href="book/<%=book.path%>/<%=book.id%>">
                                 <img class="list-group-item" src="/<%= book.cover %>" alt="<%= book.title%>">
                             </a>
                         <% }} %>
-                        <a class="all list-group-item" data-toggle="tooltip" data-placement="auto" href="/<%= section.split(" ").join("_") %>/<%= items.split(" ").join("_") %>/">
+                        <a class="all list-group-item" data-toggle="tooltip" data-placement="auto" href="/<%= section%>/<%= items%>/">
                             See ALL
                         </a>
                     </ul>

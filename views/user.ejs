@@ -24,7 +24,7 @@
 
             <% for( let book of books.orders) { %>
                 <div class="col-6 col-md-4 col-xl-3 mb-5">
-                    <a class=" d-flex justify-content-center" href="/book/<%=book.title.split(" ").join("_")%>/<%=book._id%>" >
+                    <a class=" d-flex justify-content-center" href="/book/<%=book.path%>/<%=book._id%>" >
                         <img src="/<%= book.cover %>" alt="<%= book.title%>">
                     </a> 
                     <p class="text-dark"><%=book.title%></p>

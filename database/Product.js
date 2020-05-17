@@ -7,6 +7,10 @@ const book = new Schema({
         type: String,
         required: true
     },
+    path:{
+        type: String,
+        required: true
+    },
     author: {
         type: String,
         required: true

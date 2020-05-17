@@ -9,12 +9,12 @@
             <h3 class="mt-5 mb-4">Nothing...</h3>
         <%} else{ %> 
 
-        <h3 class="mt-5 mb-4"><%= sectionName %> </h3>
+        <h3 class="mt-5 mb-4"><%= sectionName.split("-").join(" ") %> </h3>
 
         <div class="row allbooks">
             <% for( let book of books) { %>
 
-            <a class="col-6 col-md-3 col-xl-3 text-center" href="/book/<%=book.title.split(" ").join("_")%>/<%=book.id%>">
+            <a class="col-6 col-md-3 col-xl-3 text-center" href="/book/<%=book.path%>/<%=book.id%>">
                 <img src="/<%= book.cover %>" alt="<%= book.title%>">
                 <p class="text-dark"><%= book.title %></p>
             </a>

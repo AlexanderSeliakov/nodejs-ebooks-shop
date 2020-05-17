@@ -1,5 +1,4 @@
 const Book = require("../database/Product")
-const Orders = require("../database/Order")
 const User = require("../database/User")
 const Model = require('../models/models.js')
 
@@ -7,6 +6,19 @@ const fs = require('fs')
 const path = require('path')
 const _ = require('lodash')
 
+// index 
+// add book page
+// edit book 
+// cart 
+// single book 
+// download logic
+// user page
+// section 
+// subsection
+
+
+
+// --- index page -------------------------------------------------------------------------- 
 exports.index = (req, res, next) => {
     Book.find({})
     .limit(9)
@@ -19,7 +31,7 @@ exports.index = (req, res, next) => {
     })
 }
 
-
+// --- add book -------------------------------------------------------------------------- 
 exports.addBook = (req, res, next)=> {
     res.render("addBook", {
         path: '/add_book',
@@ -30,6 +42,7 @@ exports.addBook = (req, res, next)=> {
     })
 }
 
+// --- edit book -------------------------------------------------------------------------- 
 exports.editBook = (req, res, next) => {
     const edit = req.query.edit
     const bookId = req.params.ID
@@ -65,7 +78,7 @@ exports.editBook = (req, res, next) => {
 }
 
 
-// cart page
+// --- cart page -------------------------------------------------------------------------- 
 exports.cart = (req, res, next)=>{
 
     Book.find({_id: req.session.Cart})
@@ -89,14 +102,14 @@ exports.cart = (req, res, next)=>{
 }
 
 
-// sigle book page 
+// --- single book page -------------------------------------------------------------------------- 
 exports.getBook = (req, res, next) => { 
 
     const id = req.params.ID  
-    const title = req.params.title.split("_").join(" ") 
+    const title = req.params.title.toLowerCase()
     let added = ( req.session.Cart ) ? req.session.Cart.filter(itm=> itm == id) : []  //  if this book already in the cart change the "buy" button    
 
-    Book.findOne({_id: id, title: title})
+    Book.findOne({_id: id, path: title})
     .then((books) => {
         if(!books){
             return  res.redirect("/")
@@ -104,9 +117,7 @@ exports.getBook = (req, res, next) => {
         if(req.User){                    // if user logged, check if he has this book
             User.findById(req.User._id)
             .then(has =>{                
-        
                 const isBought = has.orders.filter(book => book == books._id.toString()) 
-
                 res.render("book", {
                     path: '',
                     pageTitle: books.title,
@@ -135,10 +146,11 @@ exports.getBook = (req, res, next) => {
     })
 }
 
+// --- download logic -------------------------------------------------------------------------- 
 exports.download = (req, res, next) => {
     const bookID = req.params.bookID
     const bookName = "book.pdf" // bookID + ".pdf"
-    const bookPath = path.join('books', bookName)
+    const bookPath = path.join('files/books', bookName)
 
     User.findById(req.User._id)
     .then(user => { 
@@ -161,7 +173,7 @@ exports.download = (req, res, next) => {
 
 
 
- // make error
+// --- User page -------------------------------------------------------------------------- 
 exports.userPage = (req, res, next) =>{
     User.findOne({email: req.User.email})
     .populate('orders')
@@ -185,9 +197,9 @@ exports.contacts = (req, res, next) =>{
 }
 
 
-// section page (author, genre or sries)
+// --- section page (authors, genres, series) -------------------------------------------------------------------------- 
 exports.getSection = (req, res, next) => { 
-    const section = req.params.section.split("_").join(" ") // _.lowerCase(req.params.section)
+    const section = req.params.section.toLowerCase()
     switch (section) {
         case "author":
             Book.find({}, {author: 1})
@@ -249,8 +261,8 @@ exports.getSection = (req, res, next) => {
 // subsection page (e.g. author => J.K. Rowling)
 exports.getSubSection = (req, res, next) => { 
 
-    const section = req.params.section.split("_").join(" ")
-    const subsection = req.params.subsection.split("_").join(" ")
+    const section = req.params.section.toLowerCase()
+    const subsection = req.params.subsection.toLowerCase()
 
     Book.find({[section]: [subsection] })
     .then((result) => {
@@ -260,7 +272,7 @@ exports.getSubSection = (req, res, next) => {
         res.render("subSection", {
             path: '/'+section+'',
             pageTitle: _.capitalize(subsection),
-            sectionName: subsection,
+            sectionName: _.startCase(_.toLower(subsection)),
             books: result,
         })
     })

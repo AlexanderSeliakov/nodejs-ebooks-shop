@@ -14,6 +14,13 @@ const transporter = nodeMailer.createTransport(sendGrid({
 }))
 
 
+// add book 
+// add to cart 
+// remove from cart
+// chek out
+// send email 
+// search
+
 // --- add Book -------------------------------------------------------------------------- 
 exports.addBookInfo = (req, res) => {
     const id = req.body.bookId
@@ -49,9 +56,10 @@ exports.addBookInfo = (req, res) => {
     }
     const addBook = Book({
         title: title,
-        author: author,
-        genre: genre,
-        series: series,
+        path: _.kebabCase(title),
+        author: _.kebabCase(author.toLowerCase()),
+        genre: _.kebabCase(genre.toLowerCase()),
+        series: _.kebabCase(series.toLowerCase()),
         price: price,
         description: description,
         cover: img.path
@@ -76,7 +84,7 @@ exports.addBookInfo = (req, res) => {
 
 exports.edit_book = (req, res, next) => {
     const id = req.body.bookID
-    const title = req.body.book_name  // тут привести в порядок строкм
+    const title = req.body.book_name
     const author = req.body.book_author
     const genre = req.body.book_genre
     const series = req.body.book_series
@@ -111,9 +119,10 @@ exports.edit_book = (req, res, next) => {
     Book.findById(id)
     .then(updatedBook=>{
         updatedBook.title = title,
-        updatedBook.author = author,
-        updatedBook.genre = genre,
-        updatedBook.series = series,
+        updatedBook.path = _.kebabCase(title),
+        updatedBook.author = _.kebabCase(author.toLowerCase()),
+        updatedBook.genre = _.kebabCase(genre.toLowerCase()),
+        updatedBook.series = _.kebabCase(series.toLowerCase()),
         updatedBook.price = price,
         updatedBook.description = description
         if(img){
@@ -175,7 +184,7 @@ exports.check_out = (req, res, next) => {
             order.save()
         })
         .then(f=>{
-            req.flash("message", "The book has been added to your catalog")            
+            req.flash("message", "The book has been added to your catalogue")            
             console.log("order Added");
             req.session.Cart = []
             res.redirect("/user")
@@ -225,10 +234,10 @@ exports.sendMail = (req, res, next)=>{
 // --- search -------------------------------------------------------------------------- 
 
 exports.search = (req, res, next)=>{
-    const search_value = _.capitalize(req.body.search)
-    Book.find({title: { $regex: '.*' + search_value + '.*' }})
+    const search_value =  _.kebabCase(req.body.search)
+    Book.find({path: { $regex: '.*' + search_value + '.*' }})
     .then(result=>{
-        res.render("subSection", {
+        res.render("subSection", {   // render subSection page beacuse structure is the same
             path: '/search',
             pageTitle: "Books Found " + result.length,
             sectionName: "What we have",

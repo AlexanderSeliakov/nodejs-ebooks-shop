@@ -26,7 +26,7 @@ const storeSession = new MongodbSession({
 
 const fileStorage = multer.diskStorage({
    destination: (req, file, cb)=>{
-      cb(null, 'img')
+      cb(null, 'files/img')
    },
     filename: (req, file, cb)=>{
        cb(null, new Date().toISOString() +'-'+ file.originalname)
@@ -50,7 +50,7 @@ app.use(compression())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(multer({storage: fileStorage, fileFilter: fileFilters }).single('book_img')); //storage imgs
 app.use(express.static("public"));
-app.use("/img", express.static("img"));
+app.use("/files/img", express.static("files/img"));
 app.use(session({
    secret: "secret", 
    resave: false, 
@@ -105,7 +105,7 @@ app.use(get);
 app.use(error.get404);
 
 app.use((err, req, res, next)=>{
-   res.status(500).render('500', {path: '500', pageTitle: " Some Error occured .We're working on this"}); //Some Error occured
+   res.status(500).render('500', {path: '500', pageTitle: err +  " Some Error occured .We're working on this"}); //Some Error occured
 })
 
 mongoose.connect(MONGO_URI,
@@ -117,12 +117,6 @@ mongoose.connect(MONGO_URI,
 
 
 
-//  CATALOG!!!!
-
-// MAKE SEARCH BTN!!!
-
 // add pagination to main, sections, subsections. cart and user page. EJS with "includes" 
 
-// make CSFR protection (259th video)
 
-// make url make up

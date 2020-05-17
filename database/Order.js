@@ -4,15 +4,9 @@ const Schema =  mongoose.Schema
 
 const order = new Schema({
     books: [{
-        // type: String,
-        // require: true
         type: Schema.Types.ObjectId, 
         ref: 'book'
     }],
-    // books :{
-    //     type: String,
-    //     required: false
-    // },
     user : {
         name: {
             type: String,
