@@ -2,11 +2,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const multer = require("multer");
 const mongoose = require('mongoose');
-const session = require('express-session');     // session 
+const session = require('express-session');
+const MongodbSession = require('connect-mongodb-session')(session);     // session 
 const flash = require('connect-flash');         // flash notifications 
 const helmet = require('helmet')
 const compression = require('compression')
-const MongodbSession = require('connect-mongodb-session')(session);
+
  
 const User = require("./database/User");
 
@@ -18,6 +19,7 @@ const error = require("./routes/errors")
 const MONGO_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster-nexcv.azure.mongodb.net/${process.env.MONGO_DEFAULT_DATABASE}`
 
 const app = express();
+
 
 const storeSession = new MongodbSession({
    uri: MONGO_URI,
